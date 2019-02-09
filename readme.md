@@ -69,5 +69,57 @@ fs.readFile('filename.txt', (err, data) => {
 })
 ```
 
+## Stream
+
+- Readable - Stream which is used for read operation
+- Writable - Stream which is used for write operation
+- Duplex - Stream which is used for both read and write operation
+- Transform - A type of duplex stream where the output is computed based on the input.
+
+
+### Readable Stream
+```javascript
+const fs = require('fs');
+let data = '';
+
+const readerStream = fs.createReadStream('input.txt');
+readerStream.setEncoding('UTF8');
+
+// to note that eventEmitter and event callback is the core of Node.js
+
+readerStream.on('data', (chunk) => {
+    data += chunk; // read the data from the file
+});
+
+readerStream.on('end', () => {
+    console.log(data);
+});
+
+readerStream.on('error', (error) => {
+    console.log(error.stack);
+});
+```
+
+### Writable Stream
+
+```javascript
+
+const fs = require('fs');
+const writableStream = fs.createWriteStream('output.txt');
+const data = 'test';
+
+writableStream.write(data, 'UTF8');
+
+writableStream.on('end', () => {
+    console.log(data);
+})
+
+writableStream.on('error', (error) => {
+    console.log(error.stack);
+})
+```
+
+
+
 # Reference
 [Tutorialspoints](https://www.tutorialspoint.com/nodejs/nodejs_event_emitter.htm)
