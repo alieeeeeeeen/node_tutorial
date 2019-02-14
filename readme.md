@@ -99,7 +99,7 @@ readerStream.on('error', (error) => {
     console.log(error.stack);
 });
 ```
-
+ 
 ### Writable Stream
 
 ```javascript
@@ -119,6 +119,41 @@ writableStream.on('error', (error) => {
 })
 ```
 
+## Node.js - Global Objects
+
+### __filename
+
+The **__filename** represents the filename of the code being executed.
+
+### __dirname
+
+The **_dirname** represents the name of the directory that currently executing script resides in.
+
+### setTimeout(cb, ms)
+
+This function is used to run callback after at least ms milliseconds.
+
+```javascript
+
+setTimeout(() => {}, 500)
+
+```
+
+### clearTimeout(cb, ms)
+
+```javascript
+var t = setTimeout(() => {}, 500);
+clearTimeout(t);
+```
+
+### setInterval(cb, ms)
+
+The setInterval is used to run callback cb repeatedly after at least ms milliseconds. The actual delay depends on external factors.
+The function return an opaque value that represents the timer
+
+### Global Objects
+- Console - Used to print information on stdout
+- Process - Used to get current information on current process.
 
 
 # Reference
